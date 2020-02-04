@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const fs   = require('fs')
 const zlib = require('zlib')
 const path = require('path')
@@ -28,3 +29,19 @@ function compresMe(pathToZip){
 }
 
 compresMe(args[0])
+=======
+const zlib = require('zlib');
+const gzip = zlib.createGzip();
+const fs = require('fs');
+const inp = fs.createReadStream('input.txt');
+const out = fs.createWriteStream('input.txt.gz');
+
+inp.pipe(gzip)
+  .on('error', () => {
+    console.log("Error gzip")
+  })
+  .pipe(out)
+  .on('error', () => {
+    console.log('Error out')
+  });
+>>>>>>> 4c9f6a3e2c9ea3e3c2f24673553a5224768183d4
